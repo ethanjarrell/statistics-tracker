@@ -3,18 +3,18 @@ const parseurl = require('parseurl');
 const bodyParser = require('body-parser');
 const path = require('path');
 const expressValidator = require('express-validator');
-const mongoose = require('mongoose');
+const mustacheExpress = require('mustache-express');
 const Activity = require('./models/activity');
+const User = require('./models/user.js');
+const mongoose = require('mongoose');
 const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
-const User = require('./models/user.js');
 const bcrypt = require('bcryptjs');
-const mustacheExpress = require('mustache-express');
 const app = express();
 
 app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
-app.set('views', './views')
+app.set('views', './views');
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -23,6 +23,8 @@ app.use(bodyParser.urlencoded({
 app.use(expressValidator());
 
 mongoose.Promise = require('bluebird');
+
+
 mongoose.connect('mongodb://localhost:27017/stats');
 
 //Authentication Section
@@ -78,14 +80,12 @@ app.use(function(req, res, next){
 
 app.get('/api/activities', passport.authenticate('basic', {session: false}), function(req, res){
   console.log('get activities');
-  Activity.find({}).then(eachOne =>{
-
-    res.json(eachOne);
+  Activity.find().then(function(activities){
     res.render('allActivities', {
     activities: activities,
-  })
-  })
-})
+    })
+});
+});
 
 //Create a new activity for me to track.
 
@@ -106,9 +106,12 @@ app.get('/api/activities/:activity_id', passport.authenticate('basic', {session:
     if (err){
     res.send(err)
   }
-  res.json(activity)
+  res.render('singleActivity', {
+  activity: activity,
+  })
   })
 })
+
 
 //Update one activity I am tracking, changing attributes such as name or type. Does not allow for changing tracked data.
 
@@ -146,7 +149,7 @@ app.get('/api/activities/date/:date', passport.authenticate('basic', {session: f
   })
 })
 
-//Update stats to a specifi date
+//Update stats to a specific date and ID
 
 app.put('/api/activities/addtodate/:activity_id/:date', passport.authenticate('basic', {session: false}), function(req, res){
   Activity.findOneAndUpdate({
@@ -157,7 +160,7 @@ app.put('/api/activities/addtodate/:activity_id/:date', passport.authenticate('b
   });
 });
 
-//Delete stats for a specific day
+//Delete stats for a specific day and ID
 
 app.delete('/api/activities/deletefromdate/:activity_id/:date', passport.authenticate('basic', {session: false}), function(req, res){
   Activity.findOneAndRemove({
@@ -171,3 +174,5 @@ app.delete('/api/activities/deletefromdate/:activity_id/:date', passport.authent
 
 app.listen(3000);
 console.log('starting applicaiton.  Good job!');
+
+module.exports = app;

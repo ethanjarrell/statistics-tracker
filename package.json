@@ -13,6 +13,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "express-validator": "^3.2.1",
     "mongoose": "^4.11.2",
     "mustache": "^2.3.0",
     "mustache-express": "^1.2.5",

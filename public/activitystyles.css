@@ -1,0 +1,37 @@
+*{
+  -webkit-transition:all .25s ease;
+       -moz-transition:all .25s ease;
+             -o-transition:all .25s ease;
+                   transition:all .25s ease;
+}
+
+.listItem {
+  height: 300px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.button {
+  font-family: 'Play', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+}
+
+a {
+  margin: 5px 0px 0px 0px;
+  font-family: 'Play', sans-serif;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+a:hover {
+  font-family: 'Play', sans-serif;
+  text-decoration: none;
+  color: #9e9e9e;
+  font-size: 25px;
+}
