@@ -102,13 +102,11 @@ app.post('/api/activities', passport.authenticate('basic', {session: false}), fu
 //Show information about one activity I am tracking, and give me the data I have recorded for that activity.
 
 app.get('/api/activities/:activity_id', passport.authenticate('basic', {session: false}), function(req, res){
-  Activity.findById(req.params.activity_id).then(function(err, activity){
+  Activity.findById(req.params.activity_id).then(function(err, activities){
     if (err){
     res.send(err)
   }
-  res.render('singleActivity', {
-  activity: activity,
-  })
+  res.json(activities)
   })
 })
 

@@ -1,8 +1,81 @@
 *{
+  font-family: 'Play', sans-serif;
   -webkit-transition:all .25s ease;
        -moz-transition:all .25s ease;
              -o-transition:all .25s ease;
                    transition:all .25s ease;
+}
+
+.bodywrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+.labelwrap2 {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.form {
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-right: 15px;
+  border-style: none;
+}
+
+fieldset {
+  border-style: none;
+}
+
+label {
+  margin-top: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+input {
+
+  width: 150px;
+  height: 35px;
+  margin-left: 5px;
+  margin-right: 5px;
+  outline: none;
+}
+
+.form__submit-button input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-size: 20px;
+  color: gray;
+  margin-bottom: 30px;
+}
+
+.form__submit-button input:hover {
+  color: black;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.labelwrap {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.title1 {
+  font-weight: bold;
+  font-size: 25px;
 }
 
 .listItem {
@@ -14,7 +87,6 @@
 }
 
 .button {
-  font-family: 'Play', sans-serif;
   font-weight: bold;
   text-decoration: none;
   color: black;
@@ -23,14 +95,12 @@
 
 a {
   margin: 5px 0px 0px 0px;
-  font-family: 'Play', sans-serif;
   text-decoration: none;
   color: black;
   font-size: 20px;
 }
 
 a:hover {
-  font-family: 'Play', sans-serif;
   text-decoration: none;
   color: #9e9e9e;
   font-size: 25px;
