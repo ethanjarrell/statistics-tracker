@@ -13,13 +13,20 @@
   flex-flow: column nowrap;
 }
 
+hr {
+width: 100vw;
+border-width: 2px;
+border-style: dashed;
+border-color: #bcbcbc;
+}
+
 .labelwrap2 {
   display: flex;
   flex-flow: row wrap;
 }
 
 .form {
-  margin-top: 75px;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,15 +63,17 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
   font-size: 20px;
-  color: gray;
+  background-color: white;
+  border: none;
+  border-style: none;
+  color: black;
   margin-bottom: 30px;
 }
 
 .form__submit-button input:hover {
-  color: black;
-  font-size: 25px;
+  color: gray;
+  font-size: 27px;
   cursor: pointer;
 }
 
@@ -78,12 +87,34 @@ input {
   font-size: 25px;
 }
 
+.title2 {
+  font-size: 14px;
+}
+
 .listItem {
   height: 300px;
   display: flex;
   flex-flow: column wrap;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
   align-items: flex-start;
+}
+
+.listed {
+  height: 300px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+}
+
+.activities {
+  overflow-x: scroll;
+  width: 80vw;
+  display: flex;
+  flex-flow: column wrap;
+  height: 250px;
 }
 
 .button {
@@ -94,10 +125,15 @@ input {
 }
 
 a {
-  margin: 5px 0px 0px 0px;
+  margin: 5px 10px 0px 10px;
   text-decoration: none;
   color: black;
   font-size: 20px;
+}
+
+.activitiestracked {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 a:hover {

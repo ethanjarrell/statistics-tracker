@@ -95,21 +95,17 @@ app.post('/api/activities', passport.authenticate('basic', {session: false}), fu
     activity_name: req.body.activity_name,
     quantity: req.body.quantity
   }).then(activity =>{
-    res.json(activity)
+    res.redirect('/api/activities')
   });
 });
 
 //Show information about one activity I am tracking, and give me the data I have recorded for that activity.
 
-app.get('/api/activities/:activity_id', passport.authenticate('basic', {session: false}), function(req, res){
-  Activity.findById(req.params.activity_id).then(function(err, activities){
-    if (err){
-    res.send(err)
-  }
-  res.json(activities)
-  })
+app.get('/api/activities/id/:activity_id', passport.authenticate('basic', {session: false}), function(req, res){
+  Activity.find().then(function(activity){
+    res.render('singleActivity', {activities:activity})
 })
-
+})
 
 //Update one activity I am tracking, changing attributes such as name or type. Does not allow for changing tracked data.
 
