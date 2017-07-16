@@ -18,7 +18,7 @@ app.set('views', './views');
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 app.use(expressValidator());
 
@@ -101,9 +101,10 @@ app.post('/api/activities', passport.authenticate('basic', {session: false}), fu
 
 //Show information about one activity I am tracking, and give me the data I have recorded for that activity.
 
-app.get('/api/activities/id/:activity_id', passport.authenticate('basic', {session: false}), function(req, res){
-  Activity.find().then(function(activity){
-    res.render('singleActivity', {activities:activity})
+app.get('/api/activities/id/:id', passport.authenticate('basic', {session: false}), function(req, res){
+
+  Activity.findById().then(function(activities){
+    res.render('singleActivity', {activities: activities});
 })
 })
 
